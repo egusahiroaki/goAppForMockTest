@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	r := service.NewUserPointRepository()
+	r := model.NewUserPointRepository()
 	result := r.GetTotalPointByUserID(1)
 	fmt.Println(result)
 }
