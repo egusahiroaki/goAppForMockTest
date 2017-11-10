@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/goSamples/mysqlSample/service"
+	"github.com/goSamples/mysqlSample/model"
 )
 
 func main() {
