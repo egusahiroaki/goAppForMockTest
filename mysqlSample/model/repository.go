@@ -5,10 +5,10 @@ import (
 	"github.com/goSamples/mysqlSample/model/datasource"
 )
 
-// UserPointRepository is
-type UserPointRepository interface {
-	GetTotalPointByUserID(userID int) int
-}
+// // UserPointRepository is
+// type UserPointRepository interface {
+// 	GetTotalPointByUserID(userID int) int
+// }
 
 // UserPointRepositoryImpl is
 type UserPointRepositoryImpl struct {
