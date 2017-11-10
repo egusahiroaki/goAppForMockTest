@@ -1,6 +1,9 @@
 package service
 
-import "github.com/goSamples/mysqlSample/model"
+import (
+	"github.com/goSamples/mysqlSample/model"
+	"github.com/goSamples/mysqlSample/model/datasource"
+)
 
 // UserService is
 type UserService struct {
@@ -12,9 +15,9 @@ func NewUserService() *UserService {
 }
 
 // GetTotalPointByID is
-func (ups UserService) GetTotalPointByID(id int) int {
-	var r model.UserPointRepository
-	r = model.NewUserPointRepository()
+func (ups *UserService) GetTotalPointByID(id int) int {
+	mysql := datasource.NewMySQL()
+	r := model.NewUserPointRepositoryImpl(mysql)
 	result := r.GetTotalPointByUserID(id)
 	return result
 }
