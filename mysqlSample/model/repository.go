@@ -8,12 +8,12 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-// UserPointRepositoryInterface is
+// UserPointRepository is
 type UserPointRepository interface {
 	GetTotalPointByUserID(userID int) int
 }
 
-// UserPointRepository is
+// UserPointRepositoryImpl is
 type UserPointRepositoryImpl struct {
 	db *sql.DB
 }
