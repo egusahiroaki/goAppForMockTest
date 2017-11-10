@@ -1,0 +1,3 @@
+package: github.com/egusahiroaki/goSamples
+import:
+- package: github.com/go-sql-driver/mysql
