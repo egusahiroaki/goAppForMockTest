@@ -9,27 +9,27 @@ import (
 )
 
 // UserPointRepositoryInterface is
-type UserPointRepositoryInterface interface {
+type UserPointRepository interface {
 	GetTotalPointByUserID(userID int) int
 }
 
 // UserPointRepository is
-type UserPointRepository struct {
+type UserPointRepositoryImpl struct {
 	db *sql.DB
 }
 
 // NewUserPointRepository is
-func NewUserPointRepository() *UserPointRepository {
+func NewUserPointRepository() *UserPointRepositoryImpl {
 	db, err := sql.Open("mysql", "root:@/user_point")
 	if err != nil {
 		panic(err.Error())
 	}
-	return &UserPointRepository{db: db}
+	return &UserPointRepositoryImpl{db: db}
 }
 
 // GetTotalPointByUserID is
 // [todo] return should error
-func (ur *UserPointRepository) GetTotalPointByUserID(userID int) int {
+func (ur *UserPointRepositoryImpl) GetTotalPointByUserID(userID int) int {
 	defer ur.db.Close()
 	// rows, err := db.Query("select sum(point) from user_point where user_id =1;")
 	query := "select sum(point) from user_point where user_id =" + strconv.Itoa(userID)

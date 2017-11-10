@@ -13,7 +13,8 @@ func NewUserService() *UserService {
 
 // GetTotalPointByID is
 func (ups UserService) GetTotalPointByID(id int) int {
-	r := model.NewUserPointRepository()
+	var r model.UserPointRepository
+	r = model.NewUserPointRepository()
 	result := r.GetTotalPointByUserID(id)
 	return result
 }
