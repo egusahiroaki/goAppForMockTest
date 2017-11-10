@@ -8,6 +8,11 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
+// UserPointRepositoryInterface is
+type UserPointRepositoryInterface interface {
+	GetTotalPointByUserID(userID int) int
+}
+
 // UserPointRepository is
 type UserPointRepository struct {
 	db *sql.DB
@@ -23,6 +28,7 @@ func NewUserPointRepository() *UserPointRepository {
 }
 
 // GetTotalPointByUserID is
+// [todo] return should error
 func (ur *UserPointRepository) GetTotalPointByUserID(userID int) int {
 	defer ur.db.Close()
 	// rows, err := db.Query("select sum(point) from user_point where user_id =1;")
