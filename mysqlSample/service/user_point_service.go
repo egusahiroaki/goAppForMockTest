@@ -8,7 +8,7 @@ import (
 	"github.com/goSamples/mysqlSample/model/datasource"
 )
 
-var dbSet = datasource.SetDB
+var dbSet = datasource.NewMySQL
 
 // UserService is
 type UserService struct {
