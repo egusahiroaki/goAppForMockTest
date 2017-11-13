@@ -12,11 +12,11 @@ import (
 
 // UserPointRepositoryImpl is
 type UserPointRepositoryImpl struct {
-	db datasource.DB
+	db datasource.DataBase
 }
 
 // NewUserPointRepositoryImpl is
-func NewUserPointRepositoryImpl(db datasource.DB) UserPointRepositoryImpl {
+func NewUserPointRepositoryImpl(db datasource.DataBase) UserPointRepositoryImpl {
 	return UserPointRepositoryImpl{db: db}
 }
 

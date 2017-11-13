@@ -8,34 +8,37 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-// DB is
-type DB interface {
+// DataBase is
+type DataBase interface {
 	SumPointByUserID(userID int) int
 }
 
-// SetDB はServiceにおいてDBの生成をスタブ化するのに利用
-func SetDB() DB {
-	return NewMySQL()
-}
+// // DatabaseFactory is to convert MySQL type to DataBase Interface
+// type DatabaseFactory func() DataBase
 
 // MySQL is
-type MySQL struct {
+type mySQL struct {
 	db *sql.DB
 }
 
+// SetDB is
+func SetDB() DataBase {
+	return NewMySQL()
+}
+
 // NewMySQL is
-func NewMySQL() *MySQL {
+func NewMySQL() DataBase {
 	db, err := sql.Open("mysql", "root:@/user_point")
 	if err != nil {
 		panic(err.Error())
 	}
 
-	return &MySQL{db: db}
+	return &mySQL{db: db}
 }
 
 // SumPointByUserID is
 // [todo] return should error
-func (ur *MySQL) SumPointByUserID(userID int) int {
+func (ur *mySQL) SumPointByUserID(userID int) int {
 	defer ur.db.Close()
 	// rows, err := db.Query("select sum(point) from user_point where user_id =1;")
 	query := "select sum(point) from user_point where user_id =" + strconv.Itoa(userID)
