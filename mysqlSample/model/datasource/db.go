@@ -13,6 +13,11 @@ type DB interface {
 	SumPointByUserID(userID int) int
 }
 
+// SetDB はServiceにおいてDBの生成をスタブ化するのに利用
+func SetDB() DB {
+	return NewMySQL()
+}
+
 // MySQL is
 type MySQL struct {
 	db *sql.DB
