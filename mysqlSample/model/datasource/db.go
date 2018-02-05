@@ -23,6 +23,7 @@ type mySQL struct {
 
 // SetDB is
 func SetDB() DataBase {
+	fmt.Println("[db.go] SetDB called")
 	return NewMySQL()
 }
 
